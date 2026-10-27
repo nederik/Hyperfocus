@@ -1,0 +1,3 @@
+Excalifont (Excalidraw; Your Own Font Foundry / Virgil, Ján Filípek / DizajnDesign)
+SIL Open Font License 1.1 — https://openfontlicense.org
+Source: @excalidraw/excalidraw 0.18.0 (Latin and Latin Extended subsets). Used on the notes board.

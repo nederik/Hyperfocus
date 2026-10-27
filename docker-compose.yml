@@ -1,0 +1,23 @@
+# Hyperfocus with Docker:
+#   1. Create a file named .env next to this one with a setup code of your choice:
+#        SETUP_TOKEN=pick-a-long-random-code
+#   2. docker compose up -d
+#   3. Open http://localhost:3000 and create your account (it asks for the setup code).
+# Your books live in the "hyperfocus-data" volume (database + uploaded images and music).
+services:
+  hyperfocus:
+    build: .
+    image: hyperfocus
+    ports:
+      - "3000:3000"
+    environment:
+      # Asked for when the account is created, so nobody else can claim a server you put online.
+      SETUP_TOKEN: ${SETUP_TOKEN:?Create a .env file with SETUP_TOKEN=some-long-random-code}
+      # Set to 1 when running behind a reverse proxy (nginx, Caddy, Traefik…) so sign-in rate limits see real IPs.
+      TRUST_PROXY: ${TRUST_PROXY:-0}
+    volumes:
+      - hyperfocus-data:/data
+    restart: unless-stopped
+
+volumes:
+  hyperfocus-data:

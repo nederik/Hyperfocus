@@ -1,0 +1,34 @@
+{
+  "name": "hyperfocus",
+  "private": true,
+  "version": "1.0.0",
+  "description": "An interactive book writing/reading tool",
+  "license": "MIT",
+  "type": "module",
+  "workspaces": [
+    "shared",
+    "server",
+    "client"
+  ],
+  "engines": {
+    "node": ">=20.12"
+  },
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c yellow,cyan \"npm:dev -w server\" \"npm:dev -w client\"",
+    "build": "npm run build -w client",
+    "start": "npm run start -w server",
+    "reset-password": "npm run reset-password -w server",
+    "typecheck": "npm run typecheck -w shared && npm run typecheck -w server && npm run typecheck -w client",
+    "build:cf": "npm run build && npm run build:cf -w server",
+    "deploy:cf": "npm run build:cf && wrangler pages deploy",
+    "build:wordnet": "node scripts/build-wordnet.mjs",
+    "build:rhymes": "node scripts/build-rhymes.mjs"
+  },
+  "devDependencies": {
+    "cmu-pronouncing-dictionary": "^3.0.0",
+    "concurrently": "^10.0.6",
+    "esbuild": "^0.28.2",
+    "typescript": "^7.0.2",
+    "wrangler": "^4.152.0"
+  }
+}

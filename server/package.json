@@ -1,0 +1,24 @@
+{
+  "name": "@hyperfocus/server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch-path=src --watch-path=../shared/src --import tsx src/node.ts",
+    "start": "node --import tsx src/node.ts --production",
+    "reset-password": "tsx src/reset-password.ts",
+    "typecheck": "tsc -p .",
+    "build:cf": "tsx src/cloudflare/build.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.5",
+    "@hyperfocus/shared": "*",
+    "@libsql/client": "^0.18.0",
+    "hono": "^4.13.13",
+    "tsx": "^4.23.15",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0"
+  }
+}

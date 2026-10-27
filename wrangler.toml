@@ -1,0 +1,14 @@
+# Cloudflare Pages settings (only needed for deploying to Cloudflare; see README → "Deploy to Cloudflare").
+# Secrets are NOT kept here; set them with `npx wrangler pages secret put SESSION_SECRET` and `... SETUP_TOKEN`.
+name = "hyperfocus"
+pages_build_output_dir = "client/dist"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "hyperfocus"
+database_id = "REPLACE_WITH_YOUR_D1_DATABASE_ID"
+
+[[kv_namespaces]]
+binding = "UPLOADS"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"
